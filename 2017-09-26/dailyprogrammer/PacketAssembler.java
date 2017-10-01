@@ -8,7 +8,7 @@ import java.io.IOException;
 import java.util.ArrayList;
 import java.util.List;
 
-public class Main {
+public class PacketAssembler {
 	
 	public static void main(String[] args) {
 		final String FILE_NAME = "./2017-09-26/challenge_input.txt";
