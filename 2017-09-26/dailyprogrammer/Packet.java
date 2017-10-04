@@ -1,13 +1,25 @@
 package dailyprogrammer;
 
-public class Packet implements Comparable<Packet> {
+public class Packet {
 	
+	// Message ID of packet
 	private int message_id;
+	
+	// Packet ID
 	private int packet_id;
+	
+	// Total number of packets in the message this packet
+	// is a part of.
 	private int total_packets;
 	
+	// Message of the packet.
 	private String message;
 	
+	/**
+	 * Creates a Packet object from a correct input.
+	 * @param input
+	 * @throws PacketException
+	 */
 	public Packet(String input) throws PacketException {
 		String[] parts = input.split("\\s+", 4);
 		if (parts.length != 4) {
@@ -34,26 +46,36 @@ public class Packet implements Comparable<Packet> {
 		this.message = parts[3];
 	}
 	
+	/**
+	 * Returns the message ID
+	 * @return int
+	 */
 	public int getMessageId() {
 		return message_id;
 	}
 	
+	/**
+	 * Returns the packet ID
+	 * @return int
+	 */
 	public int getPacketId() {
 		return packet_id;
 	}
 	
+	/**
+	 * Returns the total number of packets in the
+	 * message that this packet is a part of.
+	 * @return int
+	 */
 	public int getTotalPackets() {
 		return total_packets;
 	}
 	
+	/**
+	 * Visual representation of a Packet
+	 */
 	@Override
 	public String toString() {
 		return message_id + "\t" + packet_id + "\t" + total_packets + "\t" + message;
 	}
-
-	@Override
-	public int compareTo(Packet arg0) {
-		return this.message_id == arg0.message_id ? this.packet_id - arg0.packet_id : this.message_id - arg0.message_id;
-	}
-	
 }

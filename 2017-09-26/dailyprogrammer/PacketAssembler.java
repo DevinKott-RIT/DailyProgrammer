@@ -14,9 +14,13 @@ public class PacketAssembler {
 		final String FILE_NAME = "./2017-09-26/challenge_input.txt";
 		try (BufferedReader br = new BufferedReader(new FileReader(new File(FILE_NAME)))) {
 			String s = "";
+			
+			// The Message map holds all of the current messages waiting for packets to arrive.
 			Map<Integer, Message> map = new HashMap<Integer, Message>();
 			while ((s = br.readLine()) != null) {
 				Packet p = new Packet(s);
+				
+				// Add each packet to a new or existing message
 				if (map.containsKey(p.getMessageId())) {
 					map.get(p.getMessageId()).addPacket(p);
 				} else {
@@ -24,8 +28,10 @@ public class PacketAssembler {
 					map.put(p.getMessageId(), newMessage);
 				}
 				
+				// Print out message if it's completed
 				if (map.get(p.getMessageId()).isMessageCompleted()) {
 					map.get(p.getMessageId()).printMessage();
+					map.remove(p.getMessageId());
 				}
 			}
 		} catch (FileNotFoundException e) {
