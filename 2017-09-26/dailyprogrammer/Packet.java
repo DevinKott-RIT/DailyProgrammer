@@ -34,6 +34,18 @@ public class Packet implements Comparable<Packet> {
 		this.message = parts[3];
 	}
 	
+	public int getMessageId() {
+		return message_id;
+	}
+	
+	public int getPacketId() {
+		return packet_id;
+	}
+	
+	public int getTotalPackets() {
+		return total_packets;
+	}
+	
 	@Override
 	public String toString() {
 		return message_id + "\t" + packet_id + "\t" + total_packets + "\t" + message;
